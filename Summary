@@ -1,0 +1,11 @@
+Drawbacks (LayeredAspects):
+
+ - The empty concrete aspect for static BT is mandatory to enable the feature code. 
+ - The adviceexecution idiom is not generic enough
+   - It is mandatory to redine all pointcuts related to around advice explicitly declared
+     in the abstract aspect.
+ 
+ - Overhead in source code/bytecode instrumentation and performance.
+    - The adviceexecution idiom does not exclude non-around advice from feature activation/deactivation.
+      They are performed by the if pointcuts provided by the redefined pointcuts.
+      So we have a "double check" problem that need to be optimized.
